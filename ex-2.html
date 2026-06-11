@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Nível 2: Intermediário - Java Easy</title>
+    <style>
+        body { background-color: #0d1b2a; font-family: 'Segoe UI', sans-serif; color: white; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        .rodape { display: flex; justify-content: space-between; align-items: center; padding: 4px 1%; background-color: #002233cc; width: 100%; box-sizing: border-box; position: sticky; top: 0; z-index: 1000; }
+        .logo { height: 200px; width: auto; display: block; }
+        .btns-rodape { display: flex; gap: 10px; }
+        .btn { background: transparent; border: 2px solid transparent; padding: 8px 16px; cursor: pointer; color: #ccc; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
+        .btn:hover { color: #E11417; }
+        .conteudo { max-width: 850px; width: 90%; margin: 40px 0; }
+        h1 { color: #E11417; }
+        .voltar { color: #0073B1; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .box-exercicio { background-color: #1b263b; border: 1px solid #0073B1; border-radius: 12px; padding: 25px; margin-bottom: 25px; }
+        .enunciado { font-size: 1.1rem; line-height: 1.5; color: #e0e0e0; }
+        .btn-gabarito { background-color: #0073B1; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 15px; }
+        .btn-gabarito:hover { background-color: #0056b3; }
+        .gabarito { display: none; background-color: #131c2e; border-left: 4px solid #E11417; padding: 15px; margin-top: 15px; border-radius: 0 8px 8px 0; overflow-x: auto; font-family: 'Courier New', monospace; color: #ffe680; white-space: pre; }
+        @media (max-width: 768px) { .rodape { flex-direction: column; gap: 5px; padding: 5px 1%; } .logo { height: 100px; } .btns-rodape { flex-wrap: wrap; justify-content: center; gap: 5px; } }
+    </style>
+</head>
+<body>
+
+    <section class="rodape">
+        <a href="exercicios.html"><img src="logo.png" alt="logo" class="logo"></a>
+        <div class="btns-rodape">
+            <a href="exercicios.html" class="btn">Exercícios</a>
+            <a href="bibliotecas.html" class="btn">Bibliotecas</a>
+            <a href="leitura.html" class="btn">Leitura de Código</a>
+            <a href="logica.html" class="btn">Lógica</a>
+        </div>
+    </section>
+
+    <div class="conteudo">
+        <a href="exercicios.html" class="voltar">← Voltar para Níveis</a>
+        <h1>Nível 02 - Intermediário</h1>
+        <p>Aprofunde a lógica estrutural usando estruturas de controle condicionais e de repetição.</p>
+
+        <div class="box-exercicio">
+            <h3>Exercício 1: Par ou Ímpar com Loops</h3>
+            <p class="enunciado">Crie um programa que solicite ao usuário um número limite de iterações e, utilizando um laço de repetição <code>for</code>, imprima todos os números pares encontrados de 1 até o valor informado.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+            <div class="gabarito" id="gab1">import java.util.Scanner;
+
+public class ParesIntervalo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um número limite positivo: ");
+        int limite = scanner.nextInt();
+        
+        System.out.println("Números pares encontrados:");
+        for (int i = 1; i <= limite; i++) {
+            if (i % 2 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 2: Validador de Senha (while)</h3>
+            <p class="enunciado">Construa um validador que impeça o fluxo do programa enquanto o usuário não digitar a senha textual correta ("JavaEasy123"). Quando acertar, imprima "Acesso Concedido".</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+            <div class="gabarito" id="gab2">import java.util.Scanner;
+
+public class LoginSistema {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String senhaCorreta = "JavaEasy123";
+        String tentativa = "";
+        
+        while (!tentativa.equals(senhaCorreta)) {
+            System.out.print("Digite a senha de acesso: ");
+            tentativa = scanner.next();
+            
+            if (!tentativa.equals(senhaCorreta)) {
+                System.out.println("Senha Incorreta! Tente novamente.");
+            }
+        }
+        
+        System.out.println("Acesso Concedido ao sistema!");
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 3: Maior de Três Números</h3>
+            <p class="enunciado">Escreva um programa que leia três números inteiros diferentes e determine qual deles é o maior utilizando condicionais encadeadas.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+            <div class="gabarito" id="gab3">import java.util.Scanner;
+
+public class MaiorNumero {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o primeiro número: ");
+        int n1 = sc.nextInt();
+        System.out.print("Digite o segundo número: ");
+        int n2 = sc.nextInt();
+        System.out.print("Digite o terceiro número: ");
+        int n3 = sc.nextInt();
+        
+        int maior = n1;
+        if (n2 > maior) {
+            maior = n2;
+        }
+        if (n3 > maior) {
+            maior = n3;
+        }
+        
+        System.out.println("O maior número digitado foi: " + maior);
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 4: Calculadora Switch-Case</h3>
+            <p class="enunciado">Desenvolva uma calculadora básica que solicite dois números reais e um caractere representando uma operação aritmética (`+`, `-`, `*`, `/`). Trate a operação usando <code>switch</code>.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+            <div class="gabarito" id="gab4">import java.util.Scanner;
+
+public class CalculadoraSwitch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o primeiro número: ");
+        double num1 = sc.nextDouble();
+        System.out.print("Digite o operador (+, -, *, /): ");
+        char operador = sc.next().charAt(0);
+        System.out.print("Digite o segundo número: ");
+        double num2 = sc.nextDouble();
+        
+        switch (operador) {
+            case '+': System.out.println("Resultado: " + (num1 + num2)); break;
+            case '-': System.out.println("Resultado: " + (num1 - num2)); break;
+            case '*': System.out.println("Resultado: " + (num1 * num2)); break;
+            case '/': 
+                if (num2 != 0) {
+                    System.out.println("Resultado: " + (num1 / num2));
+                } else {
+                    System.out.println("Erro: Divisão por zero!");
+                }
+                break;
+            default: System.out.println("Operador inválido!");
+        }
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 5: Tabuada Completa</h3>
+            <p class="enunciado">Peça para o usuário digitar um número inteiro. Com um laço <code>for</code>, calcule e exiba a tabuada desse número de 1 a 10.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+            <div class="gabarito" id="gab5">import java.util.Scanner;
+
+public class Tabuada {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Quer ver a tabuada de qual número? ");
+        int num = sc.nextInt();
+        
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 6: Somatório com Flag de Parada</h3>
+            <p class="enunciado">Escreva um programa que leia números inteiros continuamente do teclado. Quando o usuário digitar o número 0, o programa deve parar e exibir a soma total de todos os números digitados.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+            <div class="gabarito" id="gab6">import java.util.Scanner;
+
+public class Somatorio {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int soma = 0;
+        int numero;
+        
+        do {
+            System.out.print("Digite um número (0 para sair): ");
+            numero = sc.nextInt();
+            soma += numero;
+        } while (numero != 0);
+        
+        System.out.println("A soma total dos números digitados é: " + soma);
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 7: Fatorial de um Número</h3>
+            <p class="enunciado">Crie um algoritmo que receba um número inteiro positivo e calcule o seu fatorial utilizando uma estrutura de repetição decremental.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+            <div class="gabarito" id="gab7">import java.util.Scanner;
+
+public class Fatorial {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite um número para calcular o fatorial: ");
+        int num = sc.nextInt();
+        
+        long fatorial = 1;
+        for (int i = num; i >= 1; i--) {
+            fatorial *= i;
+        }
+        
+        System.out.println("O fatorial de " + num + " é " + fatorial);
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 8: Verificador de Triângulos</h3>
+            <p class="enunciado">Leia três valores decimais representando os lados de um triângulo. Primeiro, valide se eles formam um triângulo válido. Caso sim, classifique-o como: Equilátero, Isósceles ou Escaleno.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+            <div class="gabarito" id="gab8">import java.util.Scanner;
+
+public class Triangulos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Lado A: "); double a = sc.nextDouble();
+        System.out.print("Lado B: "); double b = sc.nextDouble();
+        System.out.print("Lado C: "); double c = sc.nextDouble();
+        
+        if ((a < b + c) && (b < a + c) && (c < a + b)) {
+            if (a == b && b == c) {
+                System.out.println("Triângulo Equilátero (lados iguais).");
+            } else if (a == b || a == c || b == c) {
+                System.out.println("Triângulo Isósceles (dois lados iguais).");
+            } else {
+                System.out.println("Triângulo Escaleno (lados diferentes).");
+            }
+        } else {
+            System.out.println("Os valores fornecidos não formam um triângulo.");
+        }
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 9: Média de Notas com Validação</h3>
+            <p class="enunciado">Construa um algoritmo que receba 4 notas escolares. O programa deve aceitar apenas valores entre 0.0 e 10.0. Caso seja inválido, peça novamente até que um número correto seja inserido.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+            <div class="gabarito" id="gab9">import java.util.Scanner;
+
+public class ValidarNotas {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double soma = 0;
+        
+        for (int i = 1; i <= 4; i++) {
+            double nota;
+            while (true) {
+                System.out.print("Digite a nota " + i + " (0 a 10): ");
+                nota = sc.nextDouble();
+                if (nota >= 0 && nota <= 10) {
+                    break;
+                }
+                System.out.println("Nota inválida! Digite novamente.");
+            }
+            soma += nota;
+        }
+        
+        System.out.println("Média final: " + (soma / 4));
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 10: Contador de Números Negativos</h3>
+            <p class="enunciado">Desenvolva um programa que peça 5 números inteiros ao usuário e, ao final, diga quantos desses números digitados eram valores negativos.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+            <div class="gabarito" id="gab10">import java.util.Scanner;
+
+public class ContadorNegativos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int negativos = 0;
+        
+        for (int i = 1; i <= 5; i++) {
+            System.out.print("Digite o valor " + i + ": ");
+            int num = sc.nextInt();
+            if (num < 0) {
+                negativos++;
+            }
+        }
+        
+        System.out.println("Você digitou " + negativos + " número(s) negativo(s).");
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 11: Média Populacional (Array Simples)</h3>
+            <p class="enunciado">Crie um vetor (array) de inteiros com espaço para armazenar 5 idades. Leia as idades via console, guarde-as no array e use um laço para calcular a média de idade da população.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab11')">Ver Gabarito</button>
+            <div class="gabarito" id="gab11">import java.util.Scanner;
+
+public class ArrayIdades {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] idades = new int[5];
+        int soma = 0;
+        
+        for (int i = 0; i < idades.length; i++) {
+            System.out.print("Digite a idade da pessoa " + (i + 1) + ": ");
+            idades[i] = sc.nextInt();
+            soma += idades[i];
+        }
+        
+        double media = (double) soma / idades.length;
+        System.out.println("A média de idade é: " + media + " anos.");
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 12: Sequência de Fibonacci Inicial</h3>
+            <p class="enunciado">Escreva um programa em Java que exiba os primeiros N termos da famosa sequência de Fibonacci, onde N é informado pelo usuário.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab12')">Ver Gabarito</button>
+            <div class="gabarito" id="gab12">import java.util.Scanner;
+
+public class Fibonacci {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Quantos termos da sequência deseja ver? ");
+        int n = sc.nextInt();
+        
+        int t1 = 0, t2 = 1;
+        System.out.print("Sequência: ");
+        
+        for (int i = 1; i <= n; i++) {
+            System.out.print(t1 + " ");
+            int proximo = t1 + t2;
+            t1 = t2;
+            t2 = proximo;
+        }
+        System.out.println();
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 13: Ano Bissexto</h3>
+            <p class="enunciado">Receba um ano inteiro via console (ex: 2024). Verifique se este ano é bissexto seguindo as regras astronômicas: divisível por 400 OU divisível por 4 e não por 100.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab13')">Ver Gabarito</button>
+            <div class="gabarito" id="gab13">import java.util.Scanner;
+
+public class AnoBissexto {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Informe o ano: ");
+        int ano = sc.nextInt();
+        
+        if ((ano % 400 == 0) || (ano % 4 == 0 && ano % 100 != 0)) {
+            System.out.println("O ano " + ano + " é BISSEXTO.");
+        } else {
+            System.out.println("O ano " + ano + " NÃO é bissexto.");
+        }
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 14: Jogo da Adivinhação Básica</h3>
+            <p class="enunciado">Defina um número secreto fixo no código (ex: 7). Peça palpites ao usuário de forma contínua até que ele acerte, indicando se o palpite foi muito alto ou muito baixo.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab14')">Ver Gabarito</button>
+            <div class="gabarito" id="gab14">import java.util.Scanner;
+
+public class JogoAdivinha {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int numeroSecreto = 7;
+        int palpite = 0;
+        
+        System.out.println("Tente adivinhar o número de 1 a 10!");
+        while (palpite != numeroSecreto) {
+            System.out.print("Seu palpite: ");
+            palpite = sc.nextInt();
+            
+            if (palpite < numeroSecreto) {
+                System.out.println("Muito baixo! Tente novamente.");
+            } else if (palpite > numeroSecreto) {
+                System.out.println("Muito alto! Tente novamente.");
+            }
+        }
+        
+        System.out.println("Parabéns, você acertou!");
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 15: Cálculo de IMC com Classificação</h3>
+            <p class="enunciado">Leia o peso e a altura de um indivíduo. Calcule o IMC ($peso / altura^2$) e apresente a classificação correspondente: Abaixo do peso (< 18.5), Normal (< 25) ou Sobrepeso (>= 25).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab15')">Ver Gabarito</button>
+            <div class="gabarito" id="gab15">import java.util.Scanner;
+
+public class CalculoIMC {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite seu peso (kg): ");
+        double peso = sc.nextDouble();
+        System.out.print("Digite sua altura (m): ");
+        double altura = sc.nextDouble();
+        
+        double imc = peso / (altura * altura);
+        System.out.printf("Seu IMC é: %.2f\n", imc);
+        
+        if (imc < 18.5) {
+            System.out.println("Classificação: Abaixo do peso.");
+        } else if (imc < 25.0) {
+            System.out.println("Classificação: Peso normal.");
+        } else {
+            System.out.println("Classificação: Sobrepeso.");
+        }
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 16: Inversor de Vetor</h3>
+            <p class="enunciado">Preencha um array com 5 elementos inteiros inseridos pelo console. Imprima os elementos em ordem inversa utilizando decrementos em um loop.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab16')">Ver Gabarito</button>
+            <div class="gabarito" id="gab16">import java.util.Scanner;
+
+public class VetorInverso {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] numeros = new int[5];
+        
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Digite o elemento " + i + ": ");
+            numeros[i] = sc.nextInt();
+        }
+        
+        System.out.print("Ordem inversa: ");
+        for (int i = numeros.length - 1; i >= 0; i--) {
+            System.out.print(numeros[i] + " ");
+        }
+        System.out.println();
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 17: Múltiplos de 3 e 5</h3>
+            <p class="enunciado">Escreva um programa que percorra os números de 1 a 30. Se for múltiplo de 3, imprima "Fizz"; se for múltiplo de 5, "Buzz"; se for de ambos, "FizzBuzz"; caso contrário, imprima o próprio número.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab17')">Ver Gabarito</button>
+            <div class="gabarito" id="gab17">public class FizzBuzz {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 30; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.println("FizzBuzz");
+            } else if (i % 3 == 0) {
+                System.out.println("Fizz");
+            } else if (i % 5 == 0) {
+                System.out.println("Buzz");
+            } else {
+                System.out.println(i);
+            }
+        }
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 18: Verificador de Maioridade em Grupo</h3>
+            <p class="enunciado">Peça a idade de 5 pessoas. Ao final do processamento, exiba quantas pessoas já atingiram a maioridade penal (>= 18 anos) e quantas são menores de idade.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab18')">Ver Gabarito</button>
+            <div class="gabarito" id="gab18">import java.util.Scanner;
+
+public class GrupoMaioridade {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int maiores = 0, menores = 0;
+        
+        for (int i = 1; i <= 5; i++) {
+            System.out.print("Idade da pessoa " + i + ": ");
+            int idade = sc.nextInt();
+            if (idade >= 18) {
+                maiores++;
+            } else {
+                menores++;
+            }
+        }
+        
+        System.out.println("Maiores de idade: " + maiores);
+        System.out.println("Menores de idade: " + menores);
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 19: Verificador de Número Primo</h3>
+            <p class="enunciado">Construa um algoritmo que receba um número inteiro positivo e informe na tela se esse número é ou não um número primo (divisível apenas por 1 e por ele mesmo).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab19')">Ver Gabarito</button>
+            <div class="gabarito" id="gab19">import java.util.Scanner;
+
+public class NumeroPrimo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite um número inteiro: ");
+        int num = sc.nextInt();
+        int divisores = 0;
+        
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                divisores++;
+            }
+        }
+        
+        if (divisores == 2) {
+            System.out.println("O número " + num + " é PRIMO.");
+        } else {
+            System.out.println("O número " + num + " NÃO é primo.");
+        }
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 20: Pesquisa de Menor Elemento</h3>
+            <p class="enunciado">Leia 5 números inteiros via teclado e armazene-os em um array. Percorra o array utilizando estruturas condicionais dentro de um loop para descobrir e exibir o menor valor informado.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab20')">Ver Gabarito</button>
+            <div class="gabarito" id="gab20">import java.util.Scanner;
+
+public class MenorValor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] valores = new int[5];
+        
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Insira o valor " + (i + 1) + ": ");
+            valores[i] = sc.nextInt();
+        }
+        
+        int menor = valores[0];
+        for (int i = 1; i < valores.length; i++) {
+            if (valores[i] < menor) {
+                menor = valores[i];
+            }
+        }
+        
+        System.out.println("O menor valor inserido na lista foi: " + menor);
+        sc.close();
+    }
+}</div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleGabarito(id) {
+            const gabBox = document.getElementById(id);
+            if (gabBox.style.display === "block") {
+                gabBox.style.display = "none";
+            } else {
+                gabBox.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
