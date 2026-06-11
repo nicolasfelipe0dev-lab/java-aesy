@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png"> 
+    <title>Lógica</title>
+    <style>
+        body {
+            background-color: #0d1b2a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .rodape {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;           
+            padding: 4px 1%;            
+            background-color: #002233cc;  
+            width: 100%;                    
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 200px; 
+            width: auto;
+            padding: 0;
+            display: block;
+        }
+
+        .btns-rodape {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            font-size: 0.9rem;      
+            background: transparent;
+            border: 2px solid transparent;
+            cursor: pointer;
+            color: #ccc;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover{
+            color: red;
+        }
+
+        .conteudo-principal {
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 0 20px;
+            margin: 50px 0 40px 0;
+        }
+
+        .conteudo-principal h1 {
+            font-size: 2.5rem;
+            color: #E11417; 
+            margin-bottom: 15px;
+        }
+
+        .conteudo-principal p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .rodape {
+                flex-direction: column; 
+                gap: 5px;             
+                padding: 5px 1%;        
+            }
+
+            .logo {
+                height: 100px;         
+            }
+
+            .btns-rodape {
+                flex-wrap: wrap;        
+                justify-content: center;
+                gap: 5px;              
+            }
+
+            .conteudo-principal h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .container-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            width: 90%;
+            margin-bottom: 60px;
+        }
+
+        .card-cont {
+            background-color: #1b263b; 
+            border: 1px solid #0073B1; 
+            border-radius: 15px;
+            padding: 25px 20px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+        }
+
+        .card-cont:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(225, 20, 23, 0.25); 
+            border-color: #E11417; 
+        }
+
+        .card-cont h2 {
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #0073B1; 
+        }
+
+        .card-cont p {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.5;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="rodape">
+        <a href="index.html"><img src="logo.png" alt="logo" class="logo"></a>
+        <div class="btns-rodape">
+            <a href="exemplos/exercicios.html"><button class="btn">Exercícios</button></a>
+            <a href="bibliotecas.html"><button class="btn">Bibliotecas</button></a>
+            <a href="leitura.html"><button class="btn">Leitura de Código</button></a>
+            <a href="logica.html"><button class="btn">Lógica</button></a>
+        </div>
+    </section>
+
+    <div class="conteudo-principal">
+        <h1>Lógica por trás dos comandos de Java</h1>
+        <p>Abra a caixa-preta do Java. Entenda a engrenagem oculta por trás de cada comando, domine os pilares da programação orientada a objetos e aprenda a pensar como os grandes programadores pensam.</p>
+    </div>
+
+    <div class="container-cards">
+        <div class="card-cont">
+            <h2>if / else</h2>
+            <p>Avalia uma expressão booleana. Se for verdadeira, executa o primeiro bloco; se for falsa, desvia o fluxo para o bloco alternativo.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>switch / case / default</h2>
+            <p>Avalia o valor de uma única variável e salta diretamente para o bloco correspondente. Se nenhum valor coincidir, executa o bloco de segurança default.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>break</h2>
+            <p>Interrompe abruptamente a execução do laço de repetição ou bloco condicional atual, transferindo o controle para a próxima linha fora desse bloco.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>continue</h2>
+            <p>Interrompe a iteração atual de um laço, ignorando o código restante abaixo dele, e salta diretamente para o teste da próxima repetição.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>while</h2>
+            <p>Avalia uma condição antes de entrar no bloco. Se for verdadeira, executa o código e repete o teste. Só encerra quando a condição se tornar falsa.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>do / while</h2>
+            <p>Executa o bloco de código primeiro e só depois testa a condição. Garante que o código seja rodado pelo menos uma vez, mesmo que a condição seja falsa.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>for</h2>
+            <p>Inicializa uma variável de controle, testa uma condição de parada e executa um passo de incremento a cada rodada. Ideal para repetições conhecidas.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>for-each</h2>
+            <p>Sequencia automaticamente cada elemento de uma coleção ou array, do início ao fim, extraindo o valor atual para uma variável temporária.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>class</h2>
+            <p>Define la estrutura, os atributos e os comportamentos de um tipo de dado personalizado. Funciona como o projeto ou molde para criar objetos.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>new</h2>
+            <p>Solicita memória ao sistema operacional para criar uma instância real de uma classe e ativa o construtor para inicializar o objeto.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>this</h2>
+            <p>Funciona como uma referência autoreferencial, apontando para a própria instância do objeto que está executando o código naquele momento.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>super</h2>
+            <p>Estabelece uma ponte direta com a classe pai imediata, permitindo acessar seus construtores, métodos ou atributos que foram herdados.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>extends</h2>
+            <p>Estabelece uma relação de herança entre duas classes, fazendo com que a classe filha adquira automaticamente as características e comportamentos da classe pai.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>implements</h2>
+            <p>Assina um compromisso onde a classe se obriga a fornecer uma implementação real para todos os métodos abstratos definidos por uma interface.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>interface</h2>
+            <p>Define um contrato de comportamento puro, especificando o que uma classe deve fazer, mas deixando totalmente em aberto o como ela fará.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>abstract</h2>
+            <p>Cria modelos incompletos. Se aplicada a uma classe, impede sua instanciação; se aplicada a um método, obriga as subclasses a criarem a lógica.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>public</h2>
+            <p>Remove qualquer barreira de visibilidade, permitindo que o elemento seja acessado por qualquer outra classe em qualquer pacote do projeto.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>private</h2>
+            <p>Restringe o acesso ao nível mais rígido, tornando o elemento visível e modificável exclusivamente de dentro da própria classe onde foi declarado.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>protected</h2>
+            <p>Permite o acesso ao elemento apenas por classes que estejam no mesmo pacote ou por subclasses, mesmo que estejam em pacotes diferentes.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>static</h2>
+            <p>Desvincula o elemento de instâncias individuais. O atributo ou método passa a pertencer à classe em si e compartilha a mesma memória para todos.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>final</h2>
+            <p>Define uma restrição de imutabilidade. Impede a alteração do valor em variáveis, a sobrescrita em métodos ou a herança em classes.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>try / catch</h2>
+            <p>O try monitora falhas imprevisíveis. Se uma falha acontece, o fluxo normal é interrompido e o catch assume para tratar o problema sem quebrar o sistema.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>finally</h2>
+            <p>Garante a execução de um bloco de código de limpeza, independentemente de o código no try ter rodado com sucesso ou ter disparado um erro.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>throw</h2>
+            <p>Dispara deliberadamente uma exceção (erro controlado) no fluxo do programa, interrompendo a execução atual para sinalizar uma anomalia.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>throws</h2>
+            <p>Declara explicitamente na assinatura de um método que ele pode produzir erros, transferindo a responsabilidade de tratamento para quem invocá-lo.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>void</h2>
+            <p>Sinaliza que o método realiza um processamento ou ação, mas não devolve nenhum tipo de dado ou resposta ao final de sua execução.</p>
+        </div>
+
+        <div class="card-cont">
+            <h2>return</h2>
+            <p>Encerra a execução do método atual imediatamente e envia um valor ou objeto de volta para o ponto exato onde o método foi chamado.</p>
+        </div>
+    </div>
+    
+</body>
+</html>
