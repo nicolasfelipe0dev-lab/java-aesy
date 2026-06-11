@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Desafios: Classes Nativas - Java Easy</title>
+    <style>
+        body { background-color: #0d1b2a; font-family: 'Segoe UI', sans-serif; color: white; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        .rodape { display: flex; justify-content: space-between; align-items: center; padding: 4px 1%; background-color: #002233cc; width: 100%; box-sizing: border-box; position: sticky; top: 0; z-index: 1000; }
+        .logo { height: 200px; width: auto; display: block; }
+        .btns-rodape { display: flex; gap: 10px; }
+        .btn { background: transparent; border: 2px solid transparent; padding: 8px 16px; cursor: pointer; color: #ccc; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
+        .btn:hover { color: #E11417; }
+        .conteudo { max-width: 850px; width: 90%; margin: 40px 0; }
+        h1 { color: #E11417; }
+        h2 { color: #0073B1; margin-top: 40px; border-bottom: 2px solid #1b263b; padding-bottom: 8px; }
+        .voltar { color: #0073B1; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .box-exercicio { background-color: #1b263b; border: 1px solid #0073B1; border-radius: 12px; padding: 25px; margin-bottom: 25px; }
+        .enunciado { font-size: 1.1rem; line-height: 1.5; color: #e0e0e0; }
+        .btn-gabarito { background-color: #0073B1; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 15px; }
+        .btn-gabarito:hover { background-color: #0056b3; }
+        .gabarito { display: none; background-color: #131c2e; border-left: 4px solid #E11417; padding: 15px; margin-top: 15px; border-radius: 0 8px 8px 0; overflow-x: auto; font-family: 'Courier New', monospace; color: #ffe680; white-space: pre; }
+        @media (max-width: 768px) { .rodape { flex-direction: column; gap: 5px; padding: 5px 1%; } .logo { height: 100px; } .btns-rodape { flex-wrap: wrap; justify-content: center; gap: 5px; } }
+    </style>
+</head>
+<body>
+
+    <section class="rodape">
+        <a href="exercicios.html"><img src="logo.png" alt="logo" class="logo"></a>
+        <div class="btns-rodape">
+            <a href="exercicios.html" class="btn">Exercícios</a>
+            <a href="bibliotecas.html" class="btn">Bibliotecas</a>
+            <a href="leitura.html" class="btn">Leitura de Código</a>
+            <a href="logica.html" class="btn">Lógica</a>
+        </div>
+    </section>
+
+    <div class="conteudo">
+        <a href="exercicios.html" class="voltar">← Voltar para Níveis</a>
+        <h1>Desafios com APIs Nativas</h1>
+        <p>Aprenda a aplicar métodos avançados nativos das classes utilitárias do ecossistema padrão da JDK.</p>
+
+        <h2>1. Classe java.lang.Math</h2>
+
+        <div class="box-exercicio">
+            <h3>Exercício 1: Cálculos de Geometria Estática (Math)</h3>
+            <p class="enunciado">Construa um programa que receba o raio de uma circunferência, calcule e exiba sua área total. Use a constante de Pi e a função de potência contidas na classe nativa <code>java.lang.Math</code>.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+            <div class="gabarito" id="gab1">import java.util.Scanner;
+
+public class AreaCirculo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o raio do círculo: ");
+        double raio = scanner.nextDouble();
+        
+        // Uso direto da API nativa Math
+        double area = Math.PI * Math.pow(raio, 2);
+        
+        System.out.printf("A área total do círculo é: %.2f\n", area);
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 2: Arredondamentos Mecânicos</h3>
+            <p class="enunciado">Leia um número decimal via console e exiba três resultados usando <code>Math</code>: o valor arredondado para cima (teto), o valor arredondado para baixo (piso) e a raiz quadrada absoluta do número.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+            <div class="gabarito" id="gab2">import java.util.Scanner;
+
+public class Arredondamentos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um número decimal: ");
+        double num = scanner.nextDouble();
+        
+        System.out.println("Arredondado para cima (ceil): " + Math.ceil(num));
+        System.out.println("Arredondado para baixo (floor): " + Math.floor(num));
+        System.out.println("Raiz quadrada (sqrt): " + Math.sqrt(Math.abs(num)));
+        
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 3: O Maior e o Menor Valor</h3>
+            <p class="enunciado">Solicite dois números inteiros ao usuário. Sem utilizar nenhuma estrutura condicional (<code>if</code> ou operador ternário), descubra e exiba qual é o maior e qual é o menor número usando os métodos nativos da <code>Math</code>.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+            <div class="gabarito" id="gab3">import java.util.Scanner;
+
+public class MaiorMenorMath {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o primeiro inteiro: ");
+        int n1 = scanner.nextInt();
+        System.out.print("Digite o segundo inteiro: ");
+        int n2 = scanner.nextInt();
+        
+        int maior = Math.max(n1, n2);
+        int menor = Math.min(n1, n2);
+        
+        System.out.println("Maior número: " + maior);
+        System.out.println("Menor número: " + menor);
+        
+        scanner.close();
+    }
+}</div>
+        </div>
+
+
+        <h2>2. Classe java.lang.String</h2>
+
+        <div class="box-exercicio">
+            <h3>Exercício 4: Verificador de Sobrenome</h3>
+            <p class="enunciado">Receba o nome completo de uma pessoa via teclado. Converta a String para letras maiúsculas e utilize um método nativo para verificar se o nome termina com o sobrenome "SILVA".</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+            <div class="gabarito" id="gab4">import java.util.Scanner;
+
+public class VerificadorSilva {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite seu nome completo: ");
+        String nomeCompleto = scanner.nextLine();
+        
+        String nomeMaiusculo = nomeCompleto.toUpperCase();
+        boolean ehSilva = nomeMaiusculo.endsWith("SILVA");
+        
+        System.out.println("O nome termina com 'SILVA'? " + ehSilva);
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 5: Substituição de Caracteres</h3>
+            <p class="enunciado">Escreva um programa que receba uma frase qualquer e altere todas as ocorrências de espaços em branco pelo caractere underscore (<code>_</code>) utilizando o método de substituição nativo da classe <code>String</code>.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+            <div class="gabarito" id="gab5">import java.util.Scanner;
+
+public class SubstituiEspacos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite uma frase: ");
+        String frase = scanner.nextLine();
+        
+        String fraseModificada = frase.replace(" ", "_");
+        
+        System.out.println("Frase modificada: " + fraseModificada);
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 6: Divisão de Strings (Tokenização)</h3>
+            <p class="enunciado">Solicite ao usuário que insira uma lista de compras de supermercado com itens separados por vírgula (ex: "Arroz,Feijão,Macarrão"). Utilize o método <code>split()</code> para quebrar a String e exiba cada item em uma linha diferente.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+            <div class="gabarito" id="gab6">import java.util.Scanner;
+
+public class DivisorItens {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite os itens separados por vírgula: ");
+        String entrada = scanner.nextLine();
+        
+        String[] itens = entrada.split(",");
+        
+        System.out.println("Seus itens separados:");
+        for (String item : itens) {
+            System.out.println("- " + item.trim());
+        }
+        scanner.close();
+    }
+}</div>
+        </div>
+
+
+        <h2>3. API de Datas (java.time)</h2>
+
+        <div class="box-exercicio">
+            <h3>Exercício 7: Idade Precisa com LocalDate</h3>
+            <p class="enunciado">Leia o ano, o mês e o dia de nascimento de uma pessoa. Converta para <code>LocalDate</code> e calcule a quantidade exata de anos de idade que ela possui hoje usando a classe utilitária <code>ChronoUnit</code> ou <code>Period</code>.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+            <div class="gabarito" id="gab7">import java.time.LocalDate;
+import java.time.Period;
+import java.util.Scanner;
+
+public class CalculadorIdade {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ano de nascimento (AAAA): "); int ano = scanner.nextInt();
+        System.out.print("Mês de nascimento (MM): "); int mes = scanner.nextInt();
+        System.out.print("Dia de nascimento (DD): "); int dia = scanner.nextInt();
+        
+        LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
+        LocalDate dataAtual = LocalDate.now();
+        
+        int idade = Period.between(dataNascimento, dataAtual).getYears();
+        
+        System.out.println("Sua idade exata é: " + idade + " anos.");
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 8: Formatador de Data e Hora (DateTimeFormatter)</h3>
+            <p class="enunciado">Capture o momento exato do sistema utilizando <code>LocalDateTime</code>. Imprima o resultado original e, em seguida, aplique a formatação nativa para exibi-lo no padrão brasileiro: <code>"dd/MM/yyyy HH:mm:ss"</code>.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+            <div class="gabarito" id="gab8">import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class FormatadorData {
+    public static void main(String[] args) {
+        LocalDateTime agora = LocalDateTime.now();
+        System.out.println("Formato ISO Padrão: " + agora);
+        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String dataFormatada = agora.format(formatador);
+        
+        System.out.println("Formato Nacional: " + dataFormatada);
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 9: Vencimento de Parcelas</h3>
+            <p class="enunciado">Imagine um sistema financeiro. Registre a data de uma compra (Data Atual). Adicione artificialmente 3 meses e 15 dias a essa data usando métodos de manipulação temporal e exiba o dia exato do vencimento da fatura.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+            <div class="gabarito" id="gab9">import java.time.LocalDate;
+
+public class VencimentoFatura {
+    public static void main(String[] args) {
+        LocalDate dataCompra = LocalDate.now();
+        System.out.println("Data da Compra: " + dataCompra);
+        
+        // Adicionando tempo à data nativamente
+        LocalDate vencimento = dataCompra.plusMonths(3).plusDays(15);
+        
+        System.out.println("Data Limite de Vencimento: " + vencimento);
+    }
+}</div>
+        </div>
+
+
+        <h2>4. Classe java.util.ArrayList</h2>
+
+        <div class="box-exercicio">
+            <h3>Exercício 10: CRUD Básico de Nomes</h3>
+            <p class="enunciado">Instancie um <code>ArrayList&lt;String&gt;</code>. Adicione 4 nomes ao carrinho. Remova o segundo elemento da lista pelo seu índice físico e verifique se o nome "Ana" consta no vetor restante utilizando o método nativo de checagem.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+            <div class="gabarito" id="gab10">import java.util.ArrayList;
+
+public class ListaNomes {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; nomes = new ArrayList&lt;&gt;();
+        nomes.add("Carlos");
+        nomes.add("Bruno");
+        nomes.add("Ana");
+        nomes.add("Daniel");
+        
+        nomes.remove(1); // Remove "Bruno"
+        
+        boolean temAna = nomes.contains("Ana");
+        System.out.println("A lista possui a 'Ana'? " + temAna);
+        System.out.println("Tamanho atual da lista: " + nomes.size());
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 11: Ordenação de Listas Dinâmicas (Collections)</h3>
+            <p class="enunciado">Leia do teclado 5 números inteiros desordenados e armazene-os em um <code>ArrayList</code>. Use o método estático nativo da classe <code>java.util.Collections</code> para ordenar a lista em ordem crescente e exiba o resultado.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab11')">Ver Gabarito</button>
+            <div class="gabarito" id="gab11">import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class OrdenaLista {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList&lt;Integer&gt; numeros = new ArrayList&lt;&gt;();
+        
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Insira o número " + (i + 1) + ": ");
+            numeros.add(scanner.nextInt());
+        }
+        
+        Collections.sort(numeros); // Ordenação nativa ascendente
+        
+        System.out.println("Lista Ordenada: " + numeros);
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 12: Substituição Condicional em Listas</h3>
+            <p class="enunciado">Crie uma lista com 5 números inteiros mistos. Percorra a lista e, para cada número negativo encontrado, substitua o valor existente por zero usando o método <code>set()</code> da estrutura do <code>ArrayList</code>.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab12')">Ver Gabarito</button>
+            <div class="gabarito" id="gab12">import java.util.ArrayList;
+
+public class LimpaNegativos {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; valores = new ArrayList&lt;&gt;();
+        valores.add(10);
+        valores.add(-5);
+        valores.add(23);
+        valores.add(-12);
+        valores.add(7);
+        
+        for (int i = 0; i < valores.size(); i++) {
+            if (valores.get(i) < 0) {
+                valores.set(i, 0); // Substituição indexada
+            }
+        }
+        
+        System.out.println("Lista limpa sem valores negativos: " + valores);
+    }
+}</div>
+        </div>
+
+
+        <h2>5. Classe java.util.HashMap</h2>
+
+        <div class="box-exercicio">
+            <h3>Exercício 13: Dicionário de Sinônimos</h3>
+            <p class="enunciado">Crie um mapa chave-valor associando palavras aos seus sinônimos (ex: "Feliz" -> "Alegre"). Solicite que o usuário digite uma palavra e apresente o sinônimo direto cadastrado no mapa.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab13')">Ver Gabarito</button>
+            <div class="gabarito" id="gab13">import java.util.HashMap;
+import java.util.Scanner;
+
+public class SinonimosMap {
+    public static void main(String[] args) {
+        HashMap&lt;String, String&gt; dicionario = new HashMap&lt;&gt;();
+        dicionario.put("rapido", "veloz");
+        dicionario.put("feliz", "alegre");
+        dicionario.put("belo", "bonito");
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite uma palavra para buscar o sinônimo: ");
+        String busca = scanner.next().toLowerCase();
+        
+        if (dicionario.containsKey(busca)) {
+            System.out.println("O sinônimo de " + busca + " é " + dicionario.get(busca));
+        } else {
+            System.out.println("Palavra não encontrada no dicionário.");
+        }
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 14: Controle de Estoque com Remoção</h3>
+            <p class="enunciado">Aloque um <code>HashMap</code> mapeando o nome de produtos (Chave) à quantidade de unidades disponíveis no estoque (Valor). Remova um item completamente do mapa caso a quantidade em estoque atinja o valor zero.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab14')">Ver Gabarito</button>
+            <div class="gabarito" id="gab14">import java.util.HashMap;
+
+public class GerenciadorEstoque {
+    public static void main(String[] args) {
+        HashMap&lt;String, Integer&gt; estoque = new HashMap&lt;&gt;();
+        estoque.put("Monitor", 12);
+        estoque.put("Mouse", 0); // Sem estoque
+        estoque.put("Teclado", 5);
+        
+        // Removendo do mapa se o valor for zero
+        estoque.remove("Mouse");
+        
+        System.out.println("Catálogo ativo de estoque: " + estoque);
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 15: Listagem Completa de Chaves</h3>
+            <p class="enunciado">Popule um mapa associando o CPF de 3 cidadãos aos seus respectivos nomes completos. Utilizando o método nativo <code>keySet()</code>, extraia e imprima apenas a lista contendo os CPFs cadastrados no sistema.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab15')">Ver Gabarito</button>
+            <div class="gabarito" id="gab15">import java.util.HashMap;
+import java.util.Set;
+
+public class ListadorChaves {
+    public static void main(String[] args) {
+        HashMap&lt;String, String&gt; usuarios = new HashMap&lt;&gt;();
+        usuarios.put("111.222.333-44", "Rodrigo Alves");
+        usuarios.put("555.666.777-88", "Fernanda Costa");
+        
+        // Coleta o conjunto exclusivo de chaves
+        Set&lt;String&gt; cpfs = usuarios.keySet();
+        
+        System.out.println("Lista de CPFs registrados na base de dados:");
+        for (String cpf : cpfs) {
+            System.out.println("-> " + cpf);
+        }
+    }
+}</div>
+        </div>
+
+
+        <h2>6. Classe java.util.Random</h2>
+
+        <div class="box-exercicio">
+            <h3>Exercício 16: Sorteio de Dado de RPG</h3>
+            <p class="enunciado">Instancie a classe nativa <code>Random</code>. Simule o lançamento de um dado de RPG de 20 faces (D20). Gere e exiba um valor pseudo-aleatório contido estritamente no intervalo fechado de 1 a 20.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab16')">Ver Gabarito</button>
+            <div class="gabarito" id="gab16">import java.util.Random;
+
+public class DadoRPG {
+    public static void main(String[] args) {
+        Random gerador = new Random();
+        
+        // nextInt(20) gera de 0 a 19. Somamos +1 para ajustar para o escopo de 1 a 20.
+        int resultadoDado = gerador.nextInt(20) + 1;
+        
+        System.out.println("O resultado do lançamento do D20 foi: " + resultadoDado);
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 17: Moeda Virtual (Cara ou Coroa)</h3>
+            <p class="enunciado">Crie uma simulação de "Cara ou Coroa". Use a classe <code>Random</code> com o método de retorno booleano (<code>nextBoolean()</code>). Se o sorteio retornar verdadeiro, imprima "Cara", senão, exiba "Coroa".</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab17')">Ver Gabarito</button>
+            <div class="gabarito" id="gab17">import java.util.Random;
+
+public class CaraCoroa {
+    public static void main(String[] args) {
+        Random rand = new Random();
+        boolean sorteio = rand.nextBoolean();
+        
+        if (sorteio) {
+            System.out.println("Resultado: CARA!");
+        } else {
+            System.out.println("Resultado: COROA!");
+        }
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 18: Sorteador de Índices de Arrays</h3>
+            <p class="enunciado">Defina um vetor fixo contendo 4 prêmios (ex: "Notebook", "Vale Compras", "Bicicleta", "Ingresso"). Utilize a classe <code>Random</code> para sortear um índice numérico válido e exiba o prêmio ganho pelo usuário.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab18')">Ver Gabarito</button>
+            <div class="gabarito" id="gab18">import java.util.Random;
+
+public class SorteioPremios {
+    public static void main(String[] args) {
+        String[] premios = {"Notebook", "Vale Compras de R$500", "Bicicleta Ergométrica", "Ingresso de Cinema"};
+        
+        Random rand = new Random();
+        // Limita o sorteio dinamicamente ao tamanho máximo do vetor
+        int indiceSorteado = rand.nextInt(premios.length);
+        
+        System.out.println("Parabéns! Você foi sorteado e ganhou: " + premios[indiceSorteado]);
+    }
+}</div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleGabarito(id) {
+            const gabBox = document.getElementById(id);
+            if (gabBox.style.display === "block") {
+                gabBox.style.display = "none";
+            } else {
+                gabBox.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

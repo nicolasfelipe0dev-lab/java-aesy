@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Nível 3: Avançado - Java Easy</title>
+    <style>
+        body { background-color: #0d1b2a; font-family: 'Segoe UI', sans-serif; color: white; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        .rodape { display: flex; justify-content: space-between; align-items: center; padding: 4px 1%; background-color: #002233cc; width: 100%; box-sizing: border-box; position: sticky; top: 0; z-index: 1000; }
+        .logo { height: 200px; width: auto; display: block; }
+        .btns-rodape { display: flex; gap: 10px; }
+        .btn { background: transparent; border: 2px solid transparent; padding: 8px 16px; cursor: pointer; color: #ccc; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
+        .btn:hover { color: #E11417; }
+        .conteudo { max-width: 850px; width: 90%; margin: 40px 0; }
+        h1 { color: #E11417; }
+        .voltar { color: #0073B1; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .box-exercicio { background-color: #1b263b; border: 1px solid #0073B1; border-radius: 12px; padding: 25px; margin-bottom: 25px; }
+        .enunciado { font-size: 1.1rem; line-height: 1.5; color: #e0e0e0; }
+        .btn-gabarito { background-color: #0073B1; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 15px; }
+        .btn-gabarito:hover { background-color: #0056b3; }
+        .gabarito { display: none; background-color: #131c2e; border-left: 4px solid #E11417; padding: 15px; margin-top: 15px; border-radius: 0 8px 8px 0; overflow-x: auto; font-family: 'Courier New', monospace; color: #ffe680; white-space: pre; }
+        @media (max-width: 768px) { .rodape { flex-direction: column; gap: 5px; padding: 5px 1%; } .logo { height: 100px; } .btns-rodape { flex-wrap: wrap; justify-content: center; gap: 5px; } }
+    </style>
+</head>
+<body>
+
+    <section class="rodape">
+        <a href="exercicios.html"><img src="logo.png" alt="logo" class="logo"></a>
+        <div class="btns-rodape">
+            <a href="exercicios.html" class="btn">Exercícios</a>
+            <a href="bibliotecas.html" class="btn">Bibliotecas</a>
+            <a href="leitura.html" class="btn">Leitura de Código</a>
+            <a href="logica.html" class="btn">Lógica</a>
+        </div>
+    </section>
+
+    <div class="conteudo">
+        <a href="exercicios.html" class="voltar">← Voltar para Níveis</a>
+        <h1>Nível 03 - Avançado</h1>
+        <p>Domine o paradigma da Orientação a Objetos e estruturas de dados inteligentes em Java.</p>
+
+        <div class="box-exercicio">
+            <h3>Exercício 1: Modelagem de Conta Bancária Simples</h3>
+            <p class="enunciado">Crie uma classe independente chamada <code>ContaBancaria</code> com encapsulamento adequado (atributos <code>private</code>: titular, saldo). Desenvolva métodos para <code>depositar</code>, <code>sacar</code> (validando fundos) e exibir dados estruturados.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+            <div class="gabarito" id="gab1">// Arquivo: ContaBancaria.java
+public class ContaBancaria {
+    private String titular;
+    private double saldo;
+
+    public ContaBancaria(String titular, double saldoInicial) {
+        this.titular = titular;
+        this.saldo = saldoInicial;
+    }
+
+    public void depositar(double valor) {
+        if (valor > 0) {
+            this.saldo += valor;
+            System.out.println("Depósito de R$" + valor + " realizado.");
+        }
+    }
+
+    public void sacar(double valor) {
+        if (valor > 0 && valor <= this.saldo) {
+            this.saldo -= valor;
+            System.out.println("Saque de R$" + valor + " concluído.");
+        } else {
+            System.out.println("Falha no saque: Saldo insuficiente.");
+        }
+    }
+
+    public void exibirStatus() {
+        System.out.println("Titular: " + titular + " | Saldo Atual: R$" + saldo);
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 2: Herança e Polimorfismo Básicos</h3>
+            <p class="enunciado">Crie uma classe abstrata base <code>Funcionario</code> com um método abstrato <code>calcularSalario()</code>. Implemente duas subclasses: <code>Gerente</code> (salário fixo + bônus) e <code>Desenvolvedor</code> (remuneração por hora trabalhada).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+            <div class="gabarito" id="gab2">// Classe Base Abstrata
+abstract class Funcionario {
+    protected String nome;
+    public Funcionario(String nome) { this.nome = nome; }
+    public abstract double calcularSalario();
+}
+
+// Subclasse Gerente
+class Gerente extends Funcionario {
+    private double salarioBase;
+    private double bonus;
+    
+    public Gerente(String nome, double salarioBase, double bonus) {
+        super(nome);
+        this.salarioBase = salarioBase;
+        this.bonus = bonus;
+    }
+    @Override
+    public double calcularSalario() { return salarioBase + bonus; }
+}
+
+// Subclasse Desenvolvedor
+class Desenvolvedor extends Funcionario {
+    private double valorHora;
+    private int horasTrabalhadas;
+    
+    public Desenvolvedor(String nome, double valorHora, int horasTrabalhadas) {
+        super(nome);
+        this.valorHora = valorHora;
+        this.horasTrabalhadas = horasTrabalhadas;
+    }
+    @Override
+    public double calcularSalario() { return valorHora * horasTrabalhadas; }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 3: Encapsulamento com Construtores e Getters/Setters</h3>
+            <p class="enunciado">Crie uma classe <code>Produto</code> com atributos privados (nome, preco, quantidadeEstoque). Implemente construtores sobrecarregados e valide se o preço e a quantidade não são negativos dentro dos métodos modificadores (Setters).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+            <div class="gabarito" id="gab3">public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidadeEstoque;
+
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        setPreco(preco);
+        this.quantidadeEstoque = 0;
+    }
+
+    public Produto(String nome, double preco, int quantidadeEstoque) {
+        this.nome = nome;
+        setPreco(preco);
+        setQuantidadeEstoque(quantidadeEstoque);
+    }
+
+    public void setPreco(double preco) {
+        this.preco = (preco >= 0) ? preco : 0.0;
+    }
+
+    public void setQuantidadeEstoque(int qtd) {
+        this.quantidadeEstoque = (qtd >= 0) ? qtd : 0;
+    }
+
+    public String getNome() { return nome; }
+    public double getPreco() { return preco; }
+    public int getQuantidadeEstoque() { return quantidadeEstoque; }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 4: Sobrecarga de Métodos (Overloading)</h3>
+            <p class="enunciado">Crie uma classe útil chamada <code>CalculadoraArea</code>. Implemente métodos estáticos homônimos chamados <code>calcularArea</code> sobrecarregados para calcular a área de um Quadrado (1 parâmetro real), Retângulo (2 parâmetros reais) e Círculo (1 parâmetro real modificando a assinatura interna).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+            <div class="gabarito" id="gab4">public class CalculadoraArea {
+    // Área do Quadrado
+    public static double calcularArea(double lado) {
+        return lado * lado;
+    }
+    
+    // Área do Retângulo
+    public static double calcularArea(double base, double altura) {
+        return base * altura;
+    }
+    
+    // Área do Círculo (usando parâmetro int para diferenciar do quadrado)
+    public static double calcularArea(double raio, boolean ehCirculo) {
+        if (ehCirculo) {
+            return Math.PI * Math.pow(raio, 2);
+        }
+        return 0;
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 5: Manipulação Dinâmica com ArrayList de Objetos</h3>
+            <p class="enunciado">Construa um mini-sistema de Gerenciamento de Alunos. Crie uma classe <code>Aluno</code> (nome, nota) e gerencie múltiplos alunos inseridos via laço dinâmico usando um <code>ArrayList&lt;Aluno&gt;</code>, exibindo a lista e a média geral da turma ao final.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+            <div class="gabarito" id="gab5">import java.util.ArrayList;
+import java.util.Scanner;
+
+class Aluno {
+    String nome; double nota;
+    public Aluno(String nome, double nota) { this.nome = nome; this.nota = nota; }
+}
+
+public class CadastroTurma {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList&lt;Aluno&gt; lista = new ArrayList&lt;&gt;();
+        
+        while (true) {
+            System.out.print("Nome do aluno (ou 'sair'): ");
+            String nome = sc.next();
+            if (nome.equalsIgnoreCase("sair")) break;
+            System.out.print("Nota: ");
+            double nota = sc.nextDouble();
+            lista.add(new Aluno(nome, nota));
+        }
+        
+        double soma = 0;
+        for (Aluno a : lista) {
+            System.out.println("Aluno: " + a.nome + " - Nota: " + a.nota);
+            soma += a.nota;
+        }
+        System.out.println("Média Geral: " + (lista.isEmpty() ? 0 : (soma / lista.size())));
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 6: Tratamento Avançado de Exceções (try-catch)</h3>
+            <p class="enunciado">Crie um programa que execute a divisão de dois inteiros colhidos por console. Capture de forma isolada e elegante as exceções aritméticas (como divisão por zero) e de tipos incorretos de dados inseridos.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+            <div class="gabarito" id="gab6">import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class TratamentoErros {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Numerador: ");
+            int num = sc.nextInt();
+            System.out.print("Denominador: ");
+            int den = sc.nextInt();
+            
+            int resultado = num / den;
+            System.out.println("Resultado: " + resultado);
+        } catch (ArithmeticException e) {
+            System.out.println("Erro Crítico: Impossível dividir por zero!");
+        } catch (InputMismatchException e) {
+            System.out.println("Erro de Entrada: Você precisa digitar apenas números inteiros.");
+        } finally {
+            sc.close();
+        }
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 7: Implementação de Interfaces</h3>
+            <p class="enunciado">Defina uma interface chamada <code>Autenticavel</code> contendo o método <code>login(String senha)</code>. Crie as classes <code>UsuarioComum</code> e <code>Administrador</code> implementando regras distintas de verificação.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+            <div class="gabarito" id="gab7">interface Autenticavel {
+    boolean login(String senha);
+}
+
+class UsuarioComum implements Autenticavel {
+    @Override
+    public boolean login(String senha) {
+        return senha.equals("1234");
+    }
+}
+
+class Administrador implements Autenticavel {
+    @Override
+    public boolean login(String senha) {
+        return senha.equals("Admin@Root#2026");
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 8: Exceção Customizada (Business Exception)</h3>
+            <p class="enunciado">Crie uma classe de exceção personalizada chamada <code>SaldoInsuficienteException</code> (herdando de <code>Exception</code>). Modifique o método de saque de uma conta hipotética para lançar (<code>throws</code>) essa exceção.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+            <div class="gabarito" id="gab8">// Exceção customizada
+class SaldoInsuficienteException extends Exception {
+    public SaldoInsuficienteException(String msg) {
+        super(msg);
+    }
+}
+
+// Classe de uso
+class ContaExemplo {
+    private double saldo = 100.0;
+
+    public void sacar(double valor) throws SaldoInsuficienteException {
+        if (valor > this.saldo) {
+            throw new SaldoInsuficienteException("Operação Cancelada! Saldo insuficiente para o valor de R$" + valor);
+        }
+        this.saldo -= valor;
+        System.out.println("Saque efetuado com sucesso.");
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 9: Agregação e Relacionamentos entre Objetos</h3>
+            <p class="enunciado">Desenvolva a modelagem de um sistema de vendas. Defina a classe <code>Cliente</code> (nome, cpf) e a classe <code>Pedido</code> (id, Cliente cliente, totalPedido). Imprima os dados da fatura ligando os objetos correlacionados.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+            <div class="gabarito" id="gab9">class Cliente {
+    String nome, cpf;
+    public Cliente(String nome, String cpf) { this.nome = nome; this.cpf = cpf; }
+}
+
+class Pedido {
+    int id;
+    Cliente cliente; // Agregação de objeto
+    double totalPedido;
+
+    public Pedido(int id, Cliente cliente, double totalPedido) {
+        this.id = id;
+        this.cliente = cliente;
+        this.totalPedido = totalPedido;
+    }
+
+    public void imprimirFatura() {
+        System.out.println("Pedido ID: " + id);
+        System.out.println("Cliente Relacionado: " + cliente.nome + " | CPF: " + cliente.cpf);
+        System.out.println("Valor de Fechamento: R$" + totalPedido);
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 10: Atributos e Métodos Estáticos (static)</h3>
+            <p class="enunciado">Crie uma classe chamada <code>ContadorAcessos</code> que possua um atributo estático contatando o número de instâncias geradas na memória do sistema. Toda vez que um objeto for criado, incremente este contador via construtor.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+            <div class="gabarito" id="gab10">public class ContadorAcessos {
+    // Variável estática compartilhada por todas as instâncias
+    private static int totalInstancias = 0;
+
+    public ContadorAcessos() {
+        totalInstancias++;
+    }
+
+    public static int getTotalInstancias() {
+        return totalInstancias;
+    }
+}
+
+// Teste em tempo de execução:
+// new ContadorAcessos(); new ContadorAcessos();
+// ContadorAcessos.getTotalInstancias(); -> Retornará 2</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 11: Classes Abstratas Puras</h3>
+            <p class="enunciado">Molde um motor gráfico de jogos. Escreva a classe abstrata <code>VeiculoJogo</code> com os métodos concretos <code>ligar()</code> e os abstratos <code>mover()</code>. Crie as classes herdeiras <code>Aviao</code> e <code>Carro</code>.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab11')">Ver Gabarito</button>
+            <div class="gabarito" id="gab11">abstract class VeiculoJogo {
+    public void ligar() {
+        System.out.println("Motor inicializado...");
+    }
+    public abstract void mover();
+}
+
+class Aviao extends VeiculoJogo {
+    @Override
+    public void mover() { System.out.println("O avião está voando a 800 km/h."); }
+}
+
+class Carro extends VeiculoJogo {
+    @Override
+    public void mover() { System.out.println("O carro está correndo na pista."); }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 12: Introdução à Manipulação Avançada de Strings</h3>
+            <p class="enunciado">Crie um utilitário de validação de textos. O programa deve ler uma String longa informada pelo console e exibir: a quantidade de caracteres, o texto em letras maiúsculas e se ele contém a palavra-chave "Java".</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab12')">Ver Gabarito</button>
+            <div class="gabarito" id="gab12">import java.util.Scanner;
+
+public class AnalisadorStrings {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite uma frase completa: ");
+        String frase = sc.nextLine();
+        
+        System.out.println("Total de caracteres: " + frase.length());
+        System.out.println("Versão em caixa alta: " + frase.toUpperCase());
+        System.out.println("Contém a palavra 'Java'? " + frase.contains("Java"));
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 13: Composição Complexa (Listas internas)</h3>
+            <p class="enunciado">Modele uma classe <code>CarrinhoDeCompras</code> que possua internamente uma lista (<code>ArrayList</code>) composta por objetos da classe <code>Item</code> (nome, preco). Escreva métodos para adicionar itens e retornar o valor consolidado.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab13')">Ver Gabarito</button>
+            <div class="gabarito" id="gab13">import java.util.ArrayList;
+
+class Item {
+    String nome; double preco;
+    public Item(String nome, double preco) { this.nome = nome; this.preco = preco; }
+}
+
+public class CarrinhoDeCompras {
+    private ArrayList&lt;Item&gt; itens = new ArrayList&lt;&gt;();
+
+    public void adicionarItem(Item item) {
+        itens.add(item);
+    }
+
+    public double calcularTotal() {
+        double total = 0;
+        for (Item i : itens) {
+            total += i.preco;
+        }
+        return total;
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 14: Enumerações (Enum) em Condicionais</h3>
+            <p class="enunciado">Crie um enum chamado <code>NivelAcesso</code> com os valores: JUNIOR, PLENO e SENIOR. Escreva uma classe contendo um método que receba esse enum e defina o salário inicial ideal baseado no escopo escolhido usando switch-case.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab14')">Ver Gabarito</button>
+            <div class="gabarito" id="gab14">enum NivelAcesso {
+    JUNIOR, PLENO, SENIOR
+}
+
+public class Cargos {
+    public void exibirSalarioBase(NivelAcesso nivel) {
+        switch (nivel) {
+            case JUNIOR: System.out.println("Base salarial: R$ 4.000,00"); break;
+            case PLENO:  System.out.println("Base salarial: R$ 7.500,00"); break;
+            case SENIOR: System.out.println("Base salarial: R$ 13.000,00"); break;
+        }
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 15: O Uso da Palavra-Chave Super</h3>
+            <p class="enunciado">Crie uma superclasse <code>Animal</code> com construtor que inicializa a espécie. Ao criar a subclasse <code>Cachorro</code>, utilize o comando <code>super()</code> para invocar o construtor do pai de forma explícita.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab15')">Ver Gabarito</button>
+            <div class="gabarito" id="gab15">class Animal {
+    protected String especie;
+    
+    public Animal(String especie) {
+        this.especie = especie;
+    }
+}
+
+class Cachorro extends Animal {
+    private String nome;
+
+    public Cachorro(String nome) {
+        super("Canino"); // Invocação explícita do construtor pai
+        this.nome = nome;
+    }
+    
+    public void apresentar() {
+        System.out.println("Nome: " + nome + " | Espécie Base: " + especie);
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 16: Manipulação Básica de Datas (API java.time)</h3>
+            <p class="enunciado">Desenvolva um programa que capte a data atual do sistema usando a classe <code>LocalDate</code> e calcule quantos dias faltam exatamente para o encerramento do ano corrente.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab16')">Ver Gabarito</button>
+            <div class="gabarito" id="gab16">import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+public class ContadorDias {
+    public static void main(String[] args) {
+        LocalDate hoje = LocalDate.now();
+        LocalDate fimDoAno = LocalDate.of(hoje.getYear(), 12, 31);
+        
+        long diasRestantes = ChronoUnit.DAYS.between(hoje, fimDoAno);
+        
+        System.out.println("Data Atual: " + hoje);
+        System.out.println("Dias restantes até o fim do ano: " + diasRestantes + " dias.");
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 17: Matrizes Bidimensionais Dinâmicas</h3>
+            <p class="enunciado">Crie uma matriz matemática bidimensional estruturada de ordem $3 \times 3$ (inteiros). Preencha a matriz e execute a soma total exclusiva dos valores posicionados na diagonal principal.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab17')">Ver Gabarito</button>
+            <div class="gabarito" id="gab17">public class MatrizDiagonal {
+    public static void main(String[] args) {
+        int[][] matriz = {
+            {5, 2, 9},
+            {1, 8, 3},
+            {4, 7, 2}
+        };
+        
+        int somaDiagonal = 0;
+        for (int i = 0; i < 3; i++) {
+            somaDiagonal += matriz[i][i]; // Posições (0,0), (1,1), (2,2)
+        }
+        
+        System.out.println("A soma dos valores da diagonal principal é: " + somaDiagonal);
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 18: Comparação e Contratos de Objetos (equals)</h3>
+            <p class="enunciado">Escreva uma classe <code>Usuario</code> (nome, email). Sobrescreva o método nativo <code>equals()</code> de maneira que dois usuários sejam avaliados como logicamente iguais caso possuam o mesmo endereço de e-mail.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab18')">Ver Gabarito</button>
+            <div class="gabarito" id="gab18">public class Usuario {
+    private String nome;
+    private String email;
+
+    public Usuario(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Usuario outro = (Usuario) obj;
+        return this.email.equalsIgnoreCase(outro.email);
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 19: Classes Finais e Métodos Inalteráveis (final)</h3>
+            <p class="enunciado">Crie uma classe imutável chamada <code>ConfiguracaoSistema</code> utilizando a palavra-chave <code>final</code>. Tente demonstrar o que acontece ao tentar estender uma classe configurada sob este modificador de segurança.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab19')">Ver Gabarito</button>
+            <div class="gabarito" id="gab19">// O modificador final impede que a classe seja herdada por outra subclasse
+public final class ConfiguracaoSistema {
+    public final String VERSAO_DATABASE = "V3.8-PROD";
+    
+    public void exibirDados() {
+        System.out.println("Banco de Dados ID: " + VERSAO_DATABASE);
+    }
+}
+
+/* Se você tentar fazer:
+  class TentativaHacker extends ConfiguracaoSistema { }
+  O compilador do Java gerará um erro impeditivo de compilação imediatamente.
+*/</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 20: Estrutura de Coleção Chave-Valor (HashMap)</h3>
+            <p class="enunciado">Crie um catálogo de produtos digital usando um <code>HashMap&lt;String, Double&gt;</code>. Registre o nome do produto como chave e seu preço como valor. Permita que o usuário pesquise o preço de um produto digitando o nome dele no console.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab20')">Ver Gabarito</button>
+            <div class="gabarito" id="gab20">import java.util.HashMap;
+import java.util.Scanner;
+
+public class CatalogoProdutos {
+    public static void main(String[] args) {
+        HashMap&lt;String, Double&gt; produtos = new HashMap&lt;&gt;();
+        produtos.put("Notebook", 4500.0);
+        produtos.put("Smartphone", 2200.0);
+        produtos.put("Teclado", 250.0);
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o nome do produto para consulta: ");
+        String busca = sc.next();
+        
+        if (produtos.containsKey(busca)) {
+            System.out.println("Preço de " + busca + ": R$ " + produtos.get(busca));
+        } else {
+            System.out.println("Produto não localizado no estoque.");
+        }
+        sc.close();
+    }
+}</div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleGabarito(id) {
+            const gabBox = document.getElementById(id);
+            if (gabBox.style.display === "block") {
+                gabBox.style.display = "none";
+            } else {
+                gabBox.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
