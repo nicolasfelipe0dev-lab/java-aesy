@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png"> 
+    <title>Bibliotecas Nativas - Java Easy</title>
+    <style>
+        body {
+            background-color: #0d1b2a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit; 
+        }
+      
+        .rodape {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;           
+            padding: 4px 1%;            
+            background-color: #002233cc;  
+            width: 100%;                    
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 200px; 
+            width: auto;
+            padding: 0;
+            display: block;
+        }
+
+        .btns-rodape {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 2px solid transparent;
+            padding: 8px 16px;
+            cursor: pointer;
+            color: #ccc;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            color: #E11417;
+        }
+
+        .conteudo-principal {
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            margin: 50px 0 30px 0;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .conteudo-principal h1 {
+            font-size: 2.5rem;
+            color: #E11417;
+            margin-bottom: 15px;
+        }
+
+        .conteudo-principal p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .container-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            width: 90%;
+            margin-bottom: 60px;
+        }
+
+        .card-cont {
+            background-color: #1b263b;
+            border: 1px solid #0073B1;
+            border-radius: 15px;
+            padding: 25px 20px;
+            color: white;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: left;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-cont:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(225, 20, 23, 0.25);
+            border-color: #E11417;
+        }
+
+        .card-cont h2 {
+            font-size: 1.4rem;
+            margin-top: 0;
+            color: #0073B1;
+            border-bottom: 1px solid #0073B1;
+            padding-bottom: 8px;
+        }
+
+        .card-cont p {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .codigo-exemplo {
+            background-color: #131c2e;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: #ffe680;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .rodape {
+                flex-direction: column;
+                gap: 5px;             
+                padding: 5px 1%; 
+            }
+            .logo {
+                height: 100px;         
+            }
+            .btns-rodape {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px;
+            }
+            .conteudo-principal h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="rodape">
+        <a href="index.html"><img src="logo.png" alt="logo" class="logo"></a>
+        <div class="btns-rodape">
+            <a href="exercicios.html"><button class="btn">Exercícios</button></a>
+            <a href="bibliotecas.html"><button class="btn">Bibliotecas</button></a>
+            <a href="leitura.html"><button class="btn">Leitura de Código</button></a>
+            <a href="logica.html"><button class="btn">Lógica</button></a>
+        </div>
+    </section>
+
+    <div class="conteudo-principal">
+        <h1>Recursos Nativos do Java (API Padrão)</h1>
+        <p>O Java já vem de fábrica com um ecossistema gigante. Conheça os principais pacotes e classes essenciais da linguagem que você pode usar imediatamente sem instalar nada.</p>
+    </div>
+
+    <div class="container-cards">
+        <a href="java-math.html">
+            <div class="card-cont">
+                <div>
+                    <h2>Classe Math</h2>
+                    <p>Fornece constantes e métodos estáticos para operações matemáticas fundamentais como potências, raízes, trigonometria e arredondamentos.</p>
+                </div>
+                <div class="codigo-exemplo">// Nativo (java.lang.Math)</div>
+            </div>
+        </a>
+
+        <a href="java-string.html">
+            <div class="card-cont">
+                <div>
+                    <h2>Classe String</h2>
+                    <p>Provê manipulação avançada de textos, busca de caracteres, divisão de frases, conversões de caixa e comparações textuais seguras.</p>
+                </div>
+                <div class="codigo-exemplo">// Nativo (java.lang.String)</div>
+            </div>
+        </a>
+
+        <a href="java-util-scanner.html">
+            <div class="card-cont">
+                <div>
+                    <h2>Scanner</h2>
+                    <p>Essencial para capturar e converter dados digitados pelo usuário no console ou ler arquivos de texto básicos.</p>
+                </div>
+                <div class="codigo-exemplo">import java.util.Scanner;</div>
+            </div>
+        </a>
+
+        <a href="java-util-collections.html">
+            <div class="card-cont">
+                <div>
+                    <h2>Collections (ArrayList)</h2>
+                    <p>Gerencia estruturas de dados dinâmicas e inteligentes, permitindo criar listas cujo tamanho cresce e diminui de forma flexível.</p>
+                </div>
+                <div class="codigo-exemplo">import java.util.ArrayList;</div>
+            </div>
+        </a>
+
+        <a href="java-io.html">
+            <div class="card-cont">
+                <div>
+                    <h2>Java IO / NIO</h2>
+                    <p>Conjunto de ferramentas robustas para criar, ler, gravar e mover arquivos de texto ou binários dentro do seu sistema de arquivos.</p>
+                </div>
+                <div class="codigo-exemplo">import java.io.File;</div>
+            </div>
+        </a>
+
+        <a href="java-time.html">
+            <div class="card-cont">
+                <div>
+                    <h2>Java Time API</h2>
+                    <p>API moderna para controle preciso de fusos horários, cálculo de períodos, formatação de datas locais e cronômetros do sistema.</p>
+                </div>
+                <div class="codigo-exemplo">import java.time.LocalDate;</div>
+            </div>
+        </a>
+
+        <a href="java-util-random.html">
+            <div class="card-cont">
+                <div>
+                    <h2>Random</h2>
+                    <p>Gerador pseudoaleatório nativo capaz de sortear números inteiros, decimais ou valores booleanos para dinâmicas de jogos ou testes.</p>
+                </div>
+                <div class="codigo-exemplo">import java.util.Random;</div>
+            </div>
+        </a>
+
+        <a href="java-desktop-swing.html">
+            <div class="card-cont">
+                <div>
+                    <h2>Java Swing</h2>
+                    <p>Conjunto de componentes gráficos legado e nativo para criar janelas desktop, botões, caixas de diálogo e interfaces completas.</p>
+                </div>
+                <div class="codigo-exemplo">import javax.swing.JFrame;</div>
+            </div>
+        </a>
+    </div>
+    
+</body>
+</html>
