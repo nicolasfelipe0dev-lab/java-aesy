@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>Nível 1: Iniciante - Java Easy</title>
+    <style>
+        body { background-color: #0d1b2a; font-family: 'Segoe UI', sans-serif; color: white; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        .rodape { display: flex; justify-content: space-between; align-items: center; padding: 4px 1%; background-color: #002233cc; width: 100%; box-sizing: border-box; position: sticky; top: 0; z-index: 1000; }
+        .logo { height: 200px; width: auto; display: block; }
+        .btns-rodape { display: flex; gap: 10px; }
+        .btn { background: transparent; border: 2px solid transparent; padding: 8px 16px; cursor: pointer; color: #ccc; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all 0.3s ease; }
+        .btn:hover { color: #E11417; }
+        .conteudo { max-width: 850px; width: 90%; margin: 40px 0; }
+        h1 { color: #E11417; }
+        .voltar { color: #0073B1; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .box-exercicio { background-color: #1b263b; border: 1px solid #0073B1; border-radius: 12px; padding: 25px; margin-bottom: 25px; }
+        .enunciado { font-size: 1.1rem; line-height: 1.5; color: #e0e0e0; }
+        .btn-gabarito { background-color: #0073B1; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 15px; transition: background 0.2s; }
+        .btn-gabarito:hover { background-color: #0056b3; }
+        .gabarito { display: none; background-color: #131c2e; border-left: 4px solid #E11417; padding: 15px; margin-top: 15px; border-radius: 0 8px 8px 0; overflow-x: auto; font-family: 'Courier New', monospace; color: #ffe680; white-space: pre; }
+        @media (max-width: 768px) { .rodape { flex-direction: column; gap: 5px; padding: 5px 1%; } .logo { height: 100px; } .btns-rodape { flex-wrap: wrap; justify-content: center; gap: 5px; } }
+    </style>
+</head>
+<body>
+
+    <section class="rodape">
+        <a href="exercicios.html"><img src="logo.png" alt="logo" class="logo"></a>
+        <div class="btns-rodape">
+            <a href="exercicios.html" class="btn">Exercícios</a>
+            <a href="bibliotecas.html" class="btn">Bibliotecas</a>
+            <a href="leitura.html" class="btn">Leitura de Código</a>
+            <a href="logica.html" class="btn">Lógica</a>
+        </div>
+    </section>
+
+    <div class="conteudo">
+        <a href="exercicios.html" class="voltar">← Voltar para Níveis</a>
+        <h1>Nível 01 - Iniciante</h1>
+        <p>Pratique a base: manipulação de variáveis primitivas e captação de dados de console.</p>
+
+        <div class="box-exercicio">
+            <h3>Exercício 1: Média Aritmética</h3>
+            <p class="enunciado">Escreva um programa em Java que receba três notas do tipo decimal (double) informadas pelo console, calcule e apresente a média final dessas notas.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab1')">Ver Gabarito</button>
+            <div class="gabarito" id="gab1">import java.util.Scanner;
+
+public class MediaNotas {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.print("Digite a primeira nota: ");
+        double n1 = teclado.nextDouble();
+        System.out.print("Digite a segunda nota: ");
+        double n2 = teclado.nextDouble();
+        System.out.print("Digite a terceira nota: ");
+        double n3 = teclado.nextDouble();
+        
+        double media = (n1 + n2 + n3) / 3.0;
+        System.out.println("A média aritmética é: " + media);
+        
+        teclado.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 2: Conversor de Idade</h3>
+            <p class="enunciado">Crie um algoritmo que leia a idade de uma pessoa expressa em anos inteiros e calcule aproximadamente quantos dias de vida essa pessoa já viveu (considere anos fixos de 365 dias).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab2')">Ver Gabarito</button>
+            <div class="gabarito" id="gab2">import java.util.Scanner;
+
+public class DiasVida {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite sua idade em anos: ");
+        int idadeAnos = scanner.nextInt();
+        
+        int totalDias = idadeAnos * 365;
+        System.out.println("Você já viveu aproximadamente " + totalDias + " dias!");
+        
+        scanner.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 3: Dobro e Triplo</h3>
+            <p class="enunciado">Escreva um programa que leia um número inteiro e exiba no console o seu dobro e o seu triplo.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab3')">Ver Gabarito</button>
+            <div class="gabarito" id="gab3">import java.util.Scanner;
+
+public class DobroTriplo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite um número inteiro: ");
+        int numero = sc.nextInt();
+        
+        System.out.println("O dobro é: " + (numero * 2));
+        System.out.println("O triplo é: " + (numero * 3));
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 4: Área do Retângulo</h3>
+            <p class="enunciado">Peça para o usuário digitar a base e a altura de um retângulo. Calcule e exiba a área total dele (Fórmula: $area = base \times altura$).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab4')">Ver Gabarito</button>
+            <div class="gabarito" id="gab4">import java.util.Scanner;
+
+public class AreaRetangulo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite a base do retângulo: ");
+        double base = sc.nextDouble();
+        System.out.print("Digite a altura do retângulo: ");
+        double altura = sc.nextDouble();
+        
+        double area = base * altura;
+        System.out.println("A área do retângulo é: " + area);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 5: Conversor de Temperatura</h3>
+            <p class="enunciado">Leia uma temperatura em graus Celsius (°C) e converta-a para Fahrenheit (°F). (Fórmula: $F = C \times 1.8 + 32$).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab5')">Ver Gabarito</button>
+            <div class="gabarito" id="gab5">import java.util.Scanner;
+
+public class ConversorTemperatura {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite a temperatura em °C: ");
+        double c = sc.nextDouble();
+        
+        double f = c * 1.8 + 32;
+        System.out.println("A temperatura em Fahrenheit é: " + f + "°F");
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 6: Reajuste Salarial</h3>
+            <p class="enunciado">Receba o salário atual de um funcionário via teclado e calcule o novo valor aplicando um aumento fixo de 15%.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab6')">Ver Gabarito</button>
+            <div class="gabarito" id="gab6">import java.util.Scanner;
+
+public class ReajusteSalario {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o salário atual: R$ ");
+        double salarioAtual = sc.nextDouble();
+        
+        double novoSalario = salarioAtual * 1.15; // 100% + 15%
+        System.out.println("O novo salário com 15% de aumento é: R$ " + novoSalario);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 7: Sucessor e Antecessor</h3>
+            <p class="enunciado">Desenvolva um programa que leia um número inteiro e escreva na tela o seu antecessor (número - 1) e o seu sucessor (número + 1).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab7')">Ver Gabarito</button>
+            <div class="gabarito" id="gab7">import java.util.Scanner;
+
+public class SucessorAntecessor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite um número: ");
+        int num = sc.nextInt();
+        
+        System.out.println("Antecessor: " + (num - 1));
+        System.out.println("Sucessor: " + (num + 1));
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 8: Conversor de Medidas</h3>
+            <p class="enunciado">Escreva um programa que leia um valor em metros e exiba o equivalente convertido em centímetros e em milímetros.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab8')">Ver Gabarito</button>
+            <div class="gabarito" id="gab8">import java.util.Scanner;
+
+public class ConversorMedidas {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o valor em metros: ");
+        double metros = sc.nextDouble();
+        
+        double centimetros = metros * 100;
+        double milimetros = metros * 1000;
+        
+        System.out.println(metros + " metros equivalem a:");
+        System.out.println(centimetros + " cm");
+        System.out.println(milimetros + " mm");
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 9: Calculadora de Descontos</h3>
+            <p class="enunciado">Faça um algoritmo que leia o preço de um produto e mostre seu novo preço com 5% de desconto.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab9')">Ver Gabarito</button>
+            <div class="gabarito" id="gab9">import java.util.Scanner;
+
+public class CalculadoraDesconto {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Preço original do produto: R$ ");
+        double preco = sc.nextDouble();
+        
+        double desconto = preco * 0.05;
+        double precoFinal = preco - desconto;
+        
+        System.out.println("Valor do desconto: R$ " + desconto);
+        System.out.println("Preço final a pagar: R$ " + precoFinal);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 10: Divisão e Resto</h3>
+            <p class="enunciado">Receba dois números inteiros. Exiba o resultado da divisão inteira entre eles e também o resto dessa divisão (operador %).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab10')">Ver Gabarito</button>
+            <div class="gabarito" id="gab10">import java.util.Scanner;
+
+public class DivisaoResto {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o dividendo (inteiro): ");
+        int dividendo = sc.nextInt();
+        System.out.print("Digite o divisor (inteiro): ");
+        int divisor = sc.nextInt();
+        
+        int quociente = dividendo / divisor;
+        int resto = dividendo % divisor;
+        
+        System.out.println("Resultado da divisão inteira: " + quociente);
+        System.out.println("Resto da divisão: " + resto);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 11: Conversor de Dólar</h3>
+            <p class="enunciado">Crie um programa que leia quanto dinheiro uma pessoa tem na carteira (em R$) e mostre quantos dólares ela pode comprar. Considere a cotação fixa de US$ 1.00 = R$ 5.00.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab11')">Ver Gabarito</button>
+            <div class="gabarito" id="gab11">import java.util.Scanner;
+
+public class ConversorMoeda {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Quantos reais você tem na carteira? R$ ");
+        double reais = sc.nextDouble();
+        
+        double dolares = reais / 5.00;
+        System.out.printf("Você pode comprar: US$ %.2f\n", dolares);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 12: Média Ponderada</h3>
+            <p class="enunciado">Calcule a média ponderada de duas notas. A primeira nota tem peso 2 e a segunda nota tem peso 3. Peça as duas notas ao usuário.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab12')">Ver Gabarito</button>
+            <div class="gabarito" id="gab12">import java.util.Scanner;
+
+public class MediaPonderada {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite a nota 1: ");
+        double nota1 = sc.nextDouble();
+        System.out.print("Digite a nota 2: ");
+        double nota2 = sc.nextDouble();
+        
+        double mediaPonderada = ((nota1 * 2) + (nota2 * 3)) / (2 + 3);
+        System.out.println("A média ponderada é: " + mediaPonderada);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 13: Cálculo de Aluguel de Carros</h3>
+            <p class="enunciado">Um carro alugado custa R$ 60 por dia e R$ 0,15 por km rodado. Escreva um programa que pergunte a quantidade de km percorridos e a quantidade de dias pelos quais ele foi alugado. Calcule o preço total a pagar.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab13')">Ver Gabarito</button>
+            <div class="gabarito" id="gab13">import java.util.Scanner;
+
+public class AluguelCarro {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Dias de aluguel: ");
+        int dias = sc.nextInt();
+        System.out.print("Km rodados: ");
+        double km = sc.nextDouble();
+        
+        double total = (dias * 60) + (km * 0.15);
+        System.out.println("Total a pagar: R$ " + total);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 14: Perímetro de Quadrado</h3>
+            <p class="enunciado">Peça o tamanho do lado de um quadrado. Calcule e exiba o perímetro dele (soma dos quatro lados).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab14')">Ver Gabarito</button>
+            <div class="gabarito" id="gab14">import java.util.Scanner;
+
+public class PerimetroQuadrado {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o lado do quadrado: ");
+        double lado = sc.nextDouble();
+        
+        double perimetro = lado * 4;
+        System.out.println("O perímetro do quadrado é: " + perimetro);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 15: Concatenação de Nome Completo</h3>
+            <p class="enunciado">Solicite o primeiro nome de um usuário e em seguida solicite o sobrenome. Exiba na tela uma frase de boas-vindas contendo o nome completo formatado.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab15')">Ver Gabarito</button>
+            <div class="gabarito" id="gab15">import java.util.Scanner;
+
+public class BoasVindas {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite seu primeiro nome: ");
+        String nome = sc.next();
+        System.out.print("Digite seu sobrenome: ");
+        String sobrenome = sc.next();
+        
+        String nomeCompleto = nome + " " + sobrenome;
+        System.out.println("Olá, " + nomeCompleto + "! Seja bem-vindo ao Java Easy.");
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 16: Rendimento de Poupança</h3>
+            <p class="enunciado">Receba um valor de depósito fixo em dinheiro. Calcule e exiba quanto esse valor renderá após 1 mês na poupança, considerando uma taxa fixa de rendimento de 0,5% ao mês.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab16')">Ver Gabarito</button>
+            <div class="gabarito" id="gab16">import java.util.Scanner;
+
+public class RendimentoPoupanca {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o valor depositado: R$ ");
+        double deposito = sc.nextDouble();
+        
+        double rendimento = deposito * 0.005; // 0.5% = 0.005
+        double valorTotal = deposito + rendimento;
+        
+        System.out.println("Rendimento após 1 mês: R$ " + rendimento);
+        System.out.println("Valor total na conta: R$ " + valorTotal);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 17: Divisão de Conta</h3>
+            <p class="enunciado">Três amigos saíram para comer. Escreva um algoritmo que leia o valor total da conta do restaurante e divida o valor igualmente entre os 3 amigos, mostrando quanto cada um deve pagar.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab17')">Ver Gabarito</button>
+            <div class="gabarito" id="gab17">import java.util.Scanner;
+
+public class DivisaoConta {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o valor total da conta: R$ ");
+        double contaTotal = sc.nextDouble();
+        
+        double valorPorAmigo = contaTotal / 3.0;
+        System.out.printf("Cada amigo deverá pagar: R$ %.2f\n", valorPorAmigo);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 18: Cálculo de Horas Trabalhadas</h3>
+            <p class="enunciado">Crie um programa que pergunte quanto um funcionário ganha por hora e o número de horas trabalhadas no mês. Calcule e mostre o total do seu salário bruto no referido mês.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab18')">Ver Gabarito</button>
+            <div class="gabarito" id="gab18">import java.util.Scanner;
+
+public class SalarioTrabalho {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Quanto você ganha por hora? R$ ");
+        double ganhoHora = sc.nextDouble();
+        System.out.print("Quantas horas trabalhou no mês? ");
+        double horasTrabalhadas = sc.nextDouble();
+        
+        double salarioBruto = ganhoHora * horasTrabalhadas;
+        System.out.println("Seu salário bruto este mês é: R$ " + salarioBruto);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 19: Volume de Caixa</h3>
+            <p class="enunciado">Peça os três dados necessários para calcular o volume de uma caixa retangular: comprimento, largura e altura. Aplique a fórmula matemática padrão ($volume = comprimento \times largura \times altura$).</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab19')">Ver Gabarito</button>
+            <div class="gabarito" id="gab19">import java.util.Scanner;
+
+public class VolumeCaixa {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o comprimento da caixa: ");
+        double comprimento = sc.nextDouble();
+        System.out.print("Digite a largura da caixa: ");
+        double largura = sc.nextDouble();
+        System.out.print("Digite a altura da caixa: ");
+        double altura = sc.nextDouble();
+        
+        double volume = comprimento * largura * altura;
+        System.out.println("O volume total da caixa é de: " + volume);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+        <div class="box-exercicio">
+            <h3>Exercício 20: Desconto de Previdência</h3>
+            <p class="enunciado">Receba o salário bruto de um funcionário. Calcule e apresente o valor final líquido após deduzir uma taxa previdenciária padrão e fixa de 11%.</p>
+            <button class="btn-gabarito" onclick="toggleGabarito('gab20')">Ver Gabarito</button>
+            <div class="gabarito" id="gab20">import java.util.Scanner;
+
+public class DescontoPrevidencia {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Digite o salário bruto do colaborador: R$ ");
+        double bruto = sc.nextDouble();
+        
+        double desconto = bruto * 0.11;
+        double liquido = bruto - desconto;
+        
+        System.out.println("Valor do desconto (11% INSS): R$ " + desconto);
+        System.out.println("Salário líquido final: R$ " + liquido);
+        
+        sc.close();
+    }
+}</div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleGabarito(id) {
+            const gabBox = document.getElementById(id);
+            if (gabBox.style.display === "block") {
+                gabBox.style.display = "none";
+            } else {
+                gabBox.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
