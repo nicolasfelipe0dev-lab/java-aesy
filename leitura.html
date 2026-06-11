@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png"> 
+    <title>Leitura Avançada - Java Easy</title>
+    <style>
+        body {
+            background-color: #0d1b2a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit; 
+        }
+      
+        .rodape {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;           
+            padding: 4px 1%;            
+            background-color: #002233cc;  
+            width: 100%;                    
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 200px; 
+            width: auto;
+            padding: 0;
+            display: block;
+        }
+
+        .btns-rodape {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 2px solid transparent;
+            padding: 8px 16px;
+            cursor: pointer;
+            color: #ccc;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            color: #E11417;
+        }
+
+        .conteudo-principal {
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            margin: 50px 0 30px 0;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .conteudo-principal h1 {
+            font-size: 2.5rem;
+            color: #E11417;
+            margin-bottom: 15px;
+        }
+
+        .conteudo-principal p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .container-input {
+            width: 90%;
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 220px;
+            background-color: #1b263b;
+            border: 2px solid #0073B1;
+            border-radius: 10px;
+            color: white;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            box-sizing: border-box;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            border-color: #E11417;
+        }
+
+        .btn-analisar {
+            padding: 12px 24px;
+            background-color: #E11417;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            align-self: center;
+        }
+
+        .btn-analisar:hover {
+            background-color: #b50e11;
+        }
+        
+        .btn-analisar:active {
+            transform: scale(0.98);
+        }
+
+        .bloco-leitura {
+            background-color: #1b263b;
+            border: 1px solid #0073B1;
+            max-width: 850px;
+            width: 90%;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-sizing: border-box;
+            display: none; 
+        }
+
+        .linha-codigo {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding: 8px;
+            border-radius: 6px;
+            background-color: #131c2e;
+            transition: border-color 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .linha-codigo:hover {
+            border-color: #E11417;
+        }
+
+        .num-linha {
+            font-family: monospace;
+            color: #0073B1;
+            font-weight: bold;
+            min-width: 35px;
+        }
+
+        .texto-codigo {
+            font-family: 'Courier New', Courier, monospace;
+            color: #e0e0e0;
+            flex-grow: 1;
+            white-space: pre;
+        }
+
+        .explicacao {
+            font-size: 0.9rem;
+            color: #aaa;
+            max-width: 380px;
+            text-align: right;
+            padding-left: 15px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .rodape {
+                flex-direction: column;
+                gap: 5px;             
+                padding: 5px 1%; 
+            }
+            .logo {
+                height: 100px;         
+            }
+            .btns-rodape {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px;
+            }
+            .conteudo-principal h1 {
+                font-size: 2rem;
+            }
+            .linha-codigo {
+                flex-direction: column;
+            }
+            .explicacao {
+                text-align: left;
+                padding-left: 35px;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="rodape">
+        <a href="index.html"><img src="logo.png" alt="logo" class="logo"></a>
+        <div class="btns-rodape">
+            <a href="exercicios.html"><button class="btn">Exercícios</button></a>
+            <a href="bibliotecas.html"><button class="btn">Bibliotecas</button></a>
+            <a href="leitura.html"><button class="btn">Leitura de Código</button></a>
+            <a href="logica.html"><button class="btn">Lógica</button></a>
+        </div>
+    </section>
+
+    <div class="conteudo-principal">
+        <h1>Analisador de Código Java</h1>
+        <p>Cole o seu código Java no campo abaixo e clique em analisar para entender o que acontece nos bastidores de cada comando, linha por linha.</p>
+    </div>
+
+    <div class="container-input">
+        <textarea id="inputCodigo" placeholder="public class Main {&#10;    public static void main(String[] args) {&#10;        System.out.println(&quot;Olá, Java!&quot;);&#10;    }&#10;}"></textarea>
+        <button class="btn-analisar" onclick="analisarCodigo()">Analisar Código</button>
+    </div>
+
+    <div class="bloco-leitura" id="resultadoAnalise"></div>
+
+    <script>
+        function analisarCodigo() {
+            const caixaTexto = document.getElementById('inputCodigo');
+            const containerResultado = document.getElementById('resultadoAnalise');
+            const linhas = caixaTexto.value.split('\n');
+            
+            if (caixaTexto.value.trim() === "") {
+                alert("Por favor, cole algum código Java antes de analisar!");
+                return;
+            }
+
+            containerResultado.innerHTML = "";
+            containerResultado.style.display = "block";
+
+            linhas.forEach((linha, index) => {
+                let explicacao = "Execução padrão estruturada do fluxo.";
+                const codigoLimpo = linha.trim();
+                const codigoMinusculo = codigoLimpo.toLowerCase();
+
+                if (codigoMinusculo.includes("public class ") || codigoMinusculo.includes("class ")) {
+                    explicacao = "Declaração de uma nova classe. Define o molde/blueprint do objeto.";
+                } else if (codigoMinusculo.includes("public static void main")) {
+                    explicacao = "Método principal (main). É o ponto de entrada obrigatório onde o Java inicia o programa.";
+                } else if (codigoMinusculo.includes("system.out.print")) {
+                    explicacao = "Comando de saída. Exibe uma mensagem de texto ou dado diretamente no console do sistema.";
+                } else if (codigoMinusculo.includes("scanner ")) {
+                    explicacao = "Instancia ou manipula um leitor de entradas para capturar o que o usuário digitar.";
+                } else if (codigoMinusculo.startsWith("if ") || codigoMinusculo.startsWith("if(")) {
+                    explicacao = "Desvio condicional. Avalia se uma expressão booleana é verdadeira para ramificar o fluxo.";
+                } else if (codigoMinusculo.startsWith("else if")) {
+                    explicacao = "Condição secundária avaliada apenas se o 'if' anterior tiver retornado falso.";
+                } else if (codigoMinusculo.startsWith("else")) {
+                    explicacao = "Caminho padrão alternativo executado caso nenhuma das condições anteriores seja válida.";
+                } else if (codigoMinusculo.startsWith("for ") || codigoMinusculo.startsWith("for(")) {
+                    explicacao = "Laço de repetição (Loop) estruturado com contador controlado e limites definidos.";
+                } else if (codigoMinusculo.startsWith("while ") || codigoMinusculo.startsWith("while( ")) {
+                    explicacao = "Laço de repetição que executa o código continuamente enquanto sua condição for verdadeira.";
+                } else if (codigoMinusculo.startsWith("do {") || codigoMinusculo.startsWith("do ")) {
+                    explicacao = "Inicia um laço de repetição que garante a execução do bloco ao menos uma vez antes do teste lógico.";
+                } else if (codigoMinusculo.startsWith("int ")) {
+                    explicacao = "Aloca memória para declarar uma variável do tipo número inteiro simples de 32 bits.";
+                } else if (codigoMinusculo.startsWith("double ") || codigoMinusculo.startsWith("float ")) {
+                    explicacao = "Declaração de variável numérica de ponto flutuante para valores decimais/quebrados.";
+                } else if (codigoMinusculo.startsWith("boolean ")) {
+                    explicacao = "Declaração de variável lógica primitiva. Armazena restritamente true (verdadeiro) ou false (falso).";
+                } else if (codigoMinusculo.startsWith("string ")) {
+                    explicacao = "Declaração de um objeto do tipo String, usado para armazenar cadeias de texto alfanuméricas.";
+                } else if (codigoMinusculo.startsWith("return ") || codigoMinusculo === "return;") {
+                    explicacao = "Encerra o método atual e devolve um valor de resposta para o bloco que o invocou.";
+                } else if (codigoMinusculo.startsWith("try {") || codigoMinusculo.startsWith("try ")) {
+                    explicacao = "Inicia um bloco de monitoramento protegido contra possíveis erros críticos em runtime.";
+                } else if (codigoMinusculo.startsWith("catch ") || codigoMinusculo.startsWith("catch(")) {
+                    explicacao = "Captura e trata uma exceção específica gerada no bloco 'try', evitando a queda do programa.";
+                } else if (codigoMinusculo.startsWith("import ")) {
+                    explicacao = "Importação de bibliotecas, APIs externas ou classes de outros pacotes do projeto.";
+                } else if (codigoLimpo === "}" || codigoLimpo === "{") {
+                    explicacao = codigoLimpo === "{" ? "Abertura de escopo (bloco de código)." : "Fechamento de escopo delimitado.";
+                } else if (codigoLimpo.startsWith("//")) {
+                    explicacao = "Comentário de linha única. Ignorado pelo compilador do Java, serve para documentação.";
+                } else if (codigoLimpo.startsWith("/*") || codigoLimpo.endsWith("*/")) {
+                    explicacao = "Bloco de comentário estendido para fins de documentação do código.";
+                } else if (codigoLimpo === "") {
+                    explicacao = "Linha em branco utilizada para legibilidade e organização visual.";
+                }
+
+                const numeroLinha = String(index + 1).padStart(2, '0');
+                
+                const divLinha = document.createElement('div');
+                divLinha.className = 'linha-codigo';
+                
+                divLinha.innerHTML = `
+                    <span class="num-linha">${numeroLinha}</span>
+                    <span class="texto-codigo">${substituirHtmlEntities(linha)}</span>
+                    <span class="explicacao">${explicacao}</span>
+                `;
+                
+                containerResultado.appendChild(divLinha);
+            });
+
+            containerResultado.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function substituirHtmlEntities(texto) {
+            return texto.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+    </script>
+</body>
+</html>
