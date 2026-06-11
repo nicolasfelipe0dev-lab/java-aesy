@@ -27,7 +27,7 @@
         display: flex;
         justify-content: space-between; 
         align-items: center;           
-        padding: 8px 1%;            
+        padding: 4px 1%;            
         background-color: #002233cc;  
         width: 100%;                    
         box-sizing: border-box;
@@ -47,6 +47,41 @@
         display: flex;
         gap: 10px;
     }
+  
+  
+  
+     @media (max-width: 768px) {
+    .rodape {
+        flex-direction: column; 
+        gap: 5px;             
+        padding: 5px 1%;        
+    }
+
+    .logo {
+        height: 100px;         
+        width: auto;
+    }
+
+    .btns-rodape {
+        flex-wrap: wrap;        
+        justify-content: center;
+        gap: 5px;               
+    }
+
+    .btn {
+        padding: 4px 10px;     
+        font-size: 0.9rem;      
+    }
+
+    .conteudo-principal {
+        margin: 20px 0 20px 0;  
+    }
+
+    .conteudo-principal h1 {
+        font-size: 1.8rem;
+    }
+}
+
 
     .btn {
         background: transparent;
